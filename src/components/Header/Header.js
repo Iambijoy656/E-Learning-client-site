@@ -1,8 +1,30 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import img from '../../assets/download.png';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import { FaUser } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+import avatarImg from '../../assets/avatar.jpeg'
+
+
+
 
 const Header = () => {
+
+    const { user, logOut } = useContext(AuthContext)
+
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.warning('User Logout')
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
+
+
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     return (
         <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
@@ -51,36 +73,75 @@ const Header = () => {
                             Blog
                         </Link>
                     </li>
-                    <li>
-                        <Link
-                            to='/register'
-                            aria-label=' Register'
-                            title='Register'
-                            className='font-xs tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                        >
-                            Register
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to='/login'
-                            aria-label='Login'
-                            title='Login'
-                            className='font-xs tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                        >
-                            Login
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to='/about'
-                            aria-label='About Us'
-                            title='About Us'
-                            className='font-xs tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                        >
-                            Logout
-                        </Link>
-                    </li>
+
+
+                    {
+
+                        user?.uid ?
+
+                            <>
+
+
+
+                                <li>
+                                    <Link
+                                        to='/about'
+                                        aria-label='About Us'
+                                        title={user?.displayName}
+                                        className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                    >
+                                        {user?.displayName}
+                                    </Link>
+                                </li>
+
+
+                                <li>
+                                    <img
+                                        src={user?.photoURL ? user.photoURL : avatarImg}
+                                        referrerPolicy='no-referrer'
+                                        alt=''
+                                        className=' border w-8 h-8 rounded-full bg-gray-500 border-gray-700'
+                                        title={user?.displayName}
+                                    />
+                                </li>
+
+                                <li>
+                                    <Link
+                                        onClick={handleLogOut}
+                                        to='/'
+                                        title='Logout'
+                                        className='font-xs tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 border border-orange-300 p-2 rounded-md hover:border-orange-700 hover:bg-orange-500'
+                                    >
+                                        Logout
+                                    </Link>
+                                </li>
+
+                            </>
+
+                            :
+                            <>
+                                <li>
+                                    <Link
+                                        to='/register'
+                                        aria-label=' Register'
+                                        title='Register'
+                                        className='font-xs tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                    >
+                                        Register
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        to='/login'
+                                        aria-label='Login'
+                                        title='Login'
+                                        className='font-xs tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 border border-orange-300 p-2 rounded-md hover:border-orange-500'
+                                    >
+                                        Login
+                                    </Link>
+                                </li>
+                            </>
+                    }
                 </ul>
                 <div className='lg:hidden'>
                     <button
@@ -169,35 +230,75 @@ const Header = () => {
                                                 Blog
                                             </Link>
                                         </li>
-                                        <li>
-                                            <Link
-                                                to='/register'
-                                                aria-label=' Register'
-                                                title='Register'
-                                                className='font-xs tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                                            >
-                                                Register
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
-                                                to='/login'
-                                                aria-label='Login'
-                                                title='Login'
-                                                className='font-xs tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                                            >
-                                                Login
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
-                                                aria-label='Logout'
-                                                title='Logout'
-                                                className='font-xs tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                                            >
-                                                Logout
-                                            </Link>
-                                        </li>
+
+
+                                        {
+
+                                            user?.uid ?
+
+                                                <>
+
+
+
+                                                    <li>
+                                                        <Link
+                                                            to='/about'
+                                                            aria-label='About Us'
+                                                            title={user?.displayName}
+                                                            className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                                        >
+                                                            {user?.displayName}
+                                                        </Link>
+                                                    </li>
+
+
+                                                    <li>
+                                                        <img
+                                                            src={user?.photoURL ? user.photoURL : avatarImg}
+                                                            referrerPolicy='no-referrer'
+                                                            alt=''
+                                                            className=' border w-8 h-8 rounded-full bg-gray-500 border-gray-700'
+                                                            title={user?.displayName}
+                                                        />
+                                                    </li>
+
+                                                    <li>
+                                                        <Link
+                                                            onClick={handleLogOut}
+                                                            to='/'
+                                                            title='Logout'
+                                                            className='font-xs tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 border border-orange-300 p-2 rounded-md hover:border-orange-700 hover:bg-orange-500'
+                                                        >
+                                                            Logout
+                                                        </Link>
+                                                    </li>
+
+                                                </>
+
+                                                :
+                                                <>
+                                                    <li>
+                                                        <Link
+                                                            to='/register'
+                                                            aria-label=' Register'
+                                                            title='Register'
+                                                            className='font-xs tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                                        >
+                                                            Register
+                                                        </Link>
+                                                    </li>
+                                                    <li>
+                                                        <Link
+                                                            to='/login'
+                                                            aria-label='Login'
+                                                            title='Login'
+                                                            className='font-xs tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 border border-orange-300 p-2 rounded-md hover:border-orange-500'
+                                                        >
+                                                            Login
+                                                        </Link>
+                                                    </li>
+                                                </>
+                                        }
                                     </ul>
                                 </nav>
                             </div>
