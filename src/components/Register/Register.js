@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const { user, signInWithGoogle, signInWithGithub, createUser } = useContext(AuthContext)
+    const { user, updateUserProfile, signInWithGoogle, signInWithGithub, createUser } = useContext(AuthContext)
     const [error, setError] = useState('')
 
 
@@ -24,6 +24,7 @@ const Register = () => {
                 console.log(user)
                 toast.success('Successfully Create an account')
                 form.reset()
+                handleUpdateUserProfile(name, photoURL)
             })
             .catch(error => {
                 console.error(error);
@@ -33,7 +34,20 @@ const Register = () => {
 
     }
 
+    // update profile
 
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => {
+                console.error(error);
+            })
+
+    }
 
 
 

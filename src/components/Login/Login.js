@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
@@ -8,6 +8,8 @@ const Login = () => {
     const [error, setError] = useState('')
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
 
 
@@ -25,7 +27,7 @@ const Login = () => {
                 console.log(user)
                 toast.success('Login Succussfully!')
                 form.reset()
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.error(error);
