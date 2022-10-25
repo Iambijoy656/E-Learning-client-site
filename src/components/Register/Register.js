@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const { user, updateUserProfile, signInWithGoogle, signInWithGithub, createUser } = useContext(AuthContext)
+    const { user, updateUserProfile, signInWithGoogle, signInWithGithub, verifyEmail, createUser } = useContext(AuthContext)
     const [error, setError] = useState('')
-
+    const navigate = useNavigate()
 
 
     const handleUser = (event) => {
@@ -22,9 +22,11 @@ const Register = () => {
                 const user = result.user;
                 setError('')
                 console.log(user)
-                toast.success('Successfully Create an account')
                 form.reset()
                 handleUpdateUserProfile(name, photoURL)
+                handleVerifyEmail()
+                navigate('/')
+
             })
             .catch(error => {
                 console.error(error);
@@ -79,7 +81,16 @@ const Register = () => {
             })
     }
 
-
+    // veriEmail
+    const handleVerifyEmail = () => {
+        verifyEmail()
+            .then(() => {
+                toast.success('Please Check your Email and verify ')
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
 
 
 

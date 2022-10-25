@@ -4,8 +4,9 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { user, signInWithGoogle, signInWithGithub, signIn } = useContext(AuthContext)
+    const { user, signInWithGoogle, signInWithGithub, signIn, resetPassword } = useContext(AuthContext)
     const [error, setError] = useState('')
+    const [userEmail, setUserEmail] = useState('')
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -70,6 +71,14 @@ const Login = () => {
     }
 
 
+    //Reset Pass
+    const handleReset = () => {
+        resetPassword(userEmail)
+            .then(() => {
+                toast.success('Reset link has been sent, please check email')
+            })
+            .catch(error => toast.error(error.message))
+    }
 
 
 
@@ -97,7 +106,7 @@ const Login = () => {
                                 Email address
                             </label>
                             <input
-
+                                onBlur={event => setUserEmail(event.target.value)}
                                 type='email'
                                 name='email'
                                 id='email'
@@ -134,7 +143,7 @@ const Login = () => {
                 <div
 
                     className='space-y-1'>
-                    <button className='text-xs hover:underline text-gray-400'>
+                    <button onClick={handleReset} className='text-xs hover:underline text-gray-400'>
                         Forgot password?
                     </button>
                 </div>
