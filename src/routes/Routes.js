@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Blog from "../components/Blog/Blog";
 import Category from "../components/Category/Category";
+import Checkout from "../components/Checkout/Checkout";
 import Course from "../components/Course/Course";
 import CoursePage from "../components/CoursePage/CoursePage";
 import Faq from "../components/Faq/Faq";
@@ -14,6 +16,7 @@ export const routes = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
 
         children: [
             {
@@ -31,7 +34,7 @@ export const routes = createBrowserRouter([
 
             {
                 path: '/blog',
-                element: <PrivateRoute><Blog></Blog></PrivateRoute>
+                element: <Blog></Blog>
             },
             {
                 path: '/register',
@@ -56,6 +59,11 @@ export const routes = createBrowserRouter([
                 path: '/course/:id',
                 element: <Course></Course>,
                 loader: ({ params }) => fetch(`http://localhost:5000/allCourse/${params.id}`)
+            },
+            {
+                path: '/checkout',
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
+
             },
 
         ]

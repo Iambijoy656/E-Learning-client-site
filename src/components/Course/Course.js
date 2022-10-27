@@ -1,13 +1,12 @@
-import React, { useContext } from 'react';
+
 import { Link, useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+
 
 
 const Course = () => {
-    const { user } = useContext(AuthContext)
 
     const course = useLoaderData();
-    console.log(course);
+    // console.log(course);
 
     const { course_name, details, modules, picture, tutor, price } = course
 
@@ -30,16 +29,12 @@ const Course = () => {
             </div>
             <div className="flex flex-wrap justify-between">
                 <div className="space-x-2">
-                    {
-                        user?.uid ?
-                            <button aria-label="Share this post" type="button" className="p-2  text-center bg-orange-500 rounded-lg">
-                                Get Premium Access
-                            </button>
-                            :
-                            <>
+                    <Link to='/checkout'>
+                        <button aria-label="Share this post" type="button" className="p-2  text-center bg-orange-500 rounded-lg">
+                            Get Premium Access
+                        </button>
+                    </Link>
 
-                            </>
-                    }
                 </div>
                 <div className="flex space-x-2 text-sm text-violet-900">
                     <button type="button" className="flex items-center p-2 px-4 space-x-1.5  bg-orange-500 rounded-lg">
