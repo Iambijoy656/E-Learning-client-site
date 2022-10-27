@@ -8,7 +8,7 @@ An online learning platform is an information system that provides a safe learni
 
 
 ## Live Link
-Hosted in Firebase -> [Programing Quiz](https://e-learning-4a147.web.app/)
+Hosted in Firebase -> [E-Learning](https://e-learning-4a147.web.app/)
 
 ## Context API
 
