@@ -83,15 +83,14 @@ const Header = () => {
 
 
 
-                                <li>
-                                    <Link
-                                        to='/about'
-                                        aria-label='About Us'
-                                        title={user?.displayName}
-                                        className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                                    >
-                                        {user?.displayName}
-                                    </Link>
+                                <li
+                                    aria-label='Your name'
+                                    title={user?.displayName}
+                                    className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                >
+
+                                    {user?.displayName}
+
                                 </li>
 
 
