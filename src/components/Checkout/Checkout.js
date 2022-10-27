@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Checkout = () => {
+    const course = useLoaderData();
+    const { id, module, course_name, picture, tutor, price, details } = course;
     const { user } = useContext(AuthContext)
     console.log(user)
 
@@ -14,16 +17,36 @@ const Checkout = () => {
 
     return (
         <div className='w-9/12 mx-auto'>
-            <h2 className='text-2xl text-violet-900 font-medium text-center my-5'>CheckOut Page</h2>
+
 
             <div className='text-xl mb-3'>
-                <h1 className='text-center font-bold'>
+                <h1 className='text-center text-2xl font-bold'>
                     Welcome <span className="text-violet-700">{user?.displayName}</span>, to the
                     checkout page.
                 </h1>
-                <h2>Email: {user.email}</h2>
             </div>
-            <button onClick={handleCheckOut} className="btn btn-outline btn-warning">Confirm CheckOut</button>
+            <div className="max-w-lg p-4 shadow-md bg-thite text-gray-900 ml-10">
+                <div className="flex justify-between pb-4 border-bottom">
+                    <div className="flex items-center">
+                        <Link rel="noopener noreferrer" to="#" className="mb-0 capitalize text-gray-100">Module: {module}</Link>
+                    </div>
+                    <Link rel="noopener noreferrer" to="#"> Tutor: {tutor} </Link>
+                </div>
+                <div className="space-y-4">
+                    <div className="space-y-2">
+                        <img src={picture} alt="" className="block object-cover object-center w-full rounded-md h-72 bg-gray-500" />
+                        <div className="flex items-center text-xs">
+                            <span>Duration: 4 hours</span>
+                        </div>
+                    </div>
+                    <div className="space-y-2">
+                        <Link rel="noopener noreferrer" to="#" className="block">
+                            <h3 className="text-xl font-semibold text-violet-400">{course_name}</h3>
+                        </Link>
+                        <p className="leading-snug text-gray-400"> Price:{price} </p>
+                    </div>
+                </div>
+            </div>
 
         </div>
     );
