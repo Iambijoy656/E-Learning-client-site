@@ -28,7 +28,7 @@ const Checkout = () => {
             <div className="max-w-lg p-4 shadow-md bg-thite text-gray-900 ml-10">
                 <div className="flex justify-between pb-4 border-bottom">
                     <div className="flex items-center">
-                        <Link rel="noopener noreferrer" to="#" className="mb-0 capitalize text-gray-100">Module: {module}</Link>
+                        <Link rel="noopener noreferrer" to="#" className="mb-0 capitalize text-gray-100">Module:{module}</Link>
                     </div>
                     <Link rel="noopener noreferrer" to="#"> Tutor: {tutor} </Link>
                 </div>
@@ -44,6 +44,8 @@ const Checkout = () => {
                             <h3 className="text-xl font-semibold text-violet-400">{course_name}</h3>
                         </Link>
                         <p className="leading-snug text-gray-400"> Price:{price} </p>
+
+                        <button onClick={handleCheckOut} className="btn btn-outline btn-warning">Confirm Checkout</button>
                     </div>
                 </div>
             </div>
