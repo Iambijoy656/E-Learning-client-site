@@ -135,13 +135,21 @@ const Header = () => {
                                         to='/login'
                                         aria-label='Login'
                                         title='Login'
-                                        className='font-xs tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 border border-orange-300 p-2 rounded-md hover:border-orange-500'
+                                        className='font-xs tracking-wide text-gray-500 transition-colors duration-200 hover:text-deep-purple-accent-400 border border-orange-300 p-2 rounded-md hover:border-orange-500'
                                     >
                                         Login
                                     </Link>
                                 </li>
                             </>
+
                     }
+                    <li>
+                        <label for="Toggle3" className="inline-flex items-center p-2 rounded-md cursor-pointer text-gray-800">
+                            <input id="Toggle3" type="checkbox" className="hidden peer" />
+                            <span className="px-2 py-1 rounded-l-md bg-gray-800 peer-checked:bg-gray-300 text-orange-400">Dark</span>
+                            <span className="px-2 py-1 rounded-r-md bg-gray-300 peer-checked:bg-gray-400">Light</span>
+                        </label>
+                    </li>
                 </ul>
                 <div className='lg:hidden'>
                     <button
