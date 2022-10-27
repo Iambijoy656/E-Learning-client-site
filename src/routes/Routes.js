@@ -48,23 +48,23 @@ export const routes = createBrowserRouter([
             {
                 path: '/coursePage',
                 element: <CoursePage></CoursePage>,
-                loader: () => fetch('http://localhost:5000/allCourse')
+                loader: () => fetch('https://e-learning-server-site.vercel.app/allCourse')
             },
 
             {
                 path: '/category/:id',
                 element: <Category></Category>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://e-learning-server-site.vercel.app/category/${params.id}`)
             },
             {
                 path: '/course/:id',
                 element: <Course></Course>,
-                loader: ({ params }) => fetch(`http://localhost:5000/allCourse/${params.id}`)
+                loader: ({ params }) => fetch(`https://e-learning-server-site.vercel.app/allCourse/${params.id}`)
             },
             {
                 path: '/checkout/:id',
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/allCourse/${params.id}`)
+                loader: ({ params }) => fetch(`https://e-learning-server-site.vercel.app/allCourse/${params.id}`)
             },
             {
                 path: '/profile',
