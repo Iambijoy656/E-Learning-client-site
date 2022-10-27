@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const { user, updateUserProfile, signInWithGoogle, signInWithGithub, verifyEmail, createUser } = useContext(AuthContext)
+    const { updateUserProfile, signInWithGoogle, signInWithGithub, verifyEmail, createUser } = useContext(AuthContext)
     const [error, setError] = useState('')
     const navigate = useNavigate()
 
@@ -16,6 +16,27 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
+
+
+        if (!/.{6}/.test(password)) {
+            setError("(Password should be at least 6 characters.)");
+            return;
+        }
+
+        if (!/.*[A-Z].*[A-Z]/.test(password)) {
+            setError("(Password should have at least 2 Uppercase.)");
+            return;
+        }
+
+        if (!/(?=.*[!@#$%^&*])/.test(password)) {
+            setError("(Password should have at least 1 special character.)");
+            return;
+        }
+
+        setError("");
+
+
+
 
         createUser(email, password)
             .then(result => {
