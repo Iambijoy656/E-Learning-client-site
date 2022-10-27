@@ -96,13 +96,15 @@ const Header = () => {
 
 
                                 <li>
-                                    <img
-                                        src={user?.photoURL ? user.photoURL : avatarImg}
-                                        referrerPolicy='no-referrer'
-                                        alt=''
-                                        className=' border w-8 h-8 rounded-full bg-gray-500 border-gray-700'
-                                        title={user?.displayName}
-                                    />
+                                    <Link to='/profile'>
+                                        <img
+                                            src={user?.photoURL ? user.photoURL : avatarImg}
+                                            referrerPolicy='no-referrer'
+                                            alt=''
+                                            className=' border w-8 h-8 rounded-full bg-gray-500 border-gray-700'
+                                            title={user?.displayName}
+                                        />
+                                    </Link>
                                 </li>
 
                                 <li>

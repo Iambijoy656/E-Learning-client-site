@@ -11,6 +11,7 @@ import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import Main from "../layout/Main";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import Profile from "../components/Profile/Profile";
 
 export const routes = createBrowserRouter([
     {
@@ -64,7 +65,10 @@ export const routes = createBrowserRouter([
                 path: '/checkout/:id',
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/allCourse/${params.id}`)
-
+            },
+            {
+                path: '/profile',
+                element: <Profile></Profile>
 
             },
 

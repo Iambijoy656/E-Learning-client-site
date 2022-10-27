@@ -44,6 +44,8 @@ const AuthProvider = ({ children }) => {
     }
 
 
+
+
     // update profile
     const updateUserProfile = (profile) => {
         setLoading(true)
