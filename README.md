@@ -1,12 +1,14 @@
 ## E-learning website
 
-We Organize Effective Learning.....
+We Organize Effective Learning.....!!
+
+An online learning platform is an information system that provides a safe learning environment where students can take online courses. These online learning platforms are often called 'online course marketplaces' because they give learners the opportunity to search for and pay for online courses directly
 
 
 
 
 ## Live Link
-Hosted in Netlify -> [Programing Quiz](https://quiz-website-pika-b16f2f.netlify.app/)
+Hosted in Firebase -> [Programing Quiz](https://e-learning-4a147.web.app/)
 
 ## Context API
 
