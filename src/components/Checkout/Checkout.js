@@ -25,27 +25,29 @@ const Checkout = () => {
                     checkout page.
                 </h1>
             </div>
-            <div className="max-w-lg p-4 shadow-md bg-thite text-gray-900 text-center">
-                <div className="flex justify-between pb-4 border-bottom">
-                    <div className="flex items-center">
-                        <Link rel="noopener noreferrer" to="#" className="mb-0 capitalize text-gray-100">Module:{module}</Link>
-                    </div>
-                    <Link rel="noopener noreferrer" to="#"> Tutor: {tutor} </Link>
-                </div>
-                <div className="space-y-4">
-                    <div className="space-y-2">
-                        <img src={picture} alt="" className="block object-cover object-center w-full rounded-md h-72 bg-gray-500" />
-                        <div className="flex items-center text-xs">
-                            <span>Duration: 4 hours</span>
+            <div className='flex justify-center items-center'>
+                <div className="max-w-lg p-4 shadow-md bg-thite text-gray-900 text-center">
+                    <div className="flex justify-between pb-4 border-bottom">
+                        <div className="flex items-center">
+                            <Link rel="noopener noreferrer" to="#" className="mb-0 capitalize text-gray-100">Please Confirm</Link>
                         </div>
+                        <Link rel="noopener noreferrer" to="#"> Tutor: {tutor} </Link>
                     </div>
-                    <div className="space-y-2">
-                        <Link rel="noopener noreferrer" to="#" className="block">
-                            <h3 className="text-xl font-semibold text-violet-400">{course_name}</h3>
-                        </Link>
-                        <p className="leading-snug text-gray-400"> Price:{price} </p>
+                    <div className="space-y-4">
+                        <div className="space-y-2">
+                            <img src={picture} alt="" className="block object-cover object-center w-full rounded-md h-72 bg-gray-500" />
+                            <div className="flex items-center text-xs">
+                                <span>Duration: 4 hours</span>
+                            </div>
+                        </div>
+                        <div className="space-y-2">
+                            <Link rel="noopener noreferrer" to="#" className="block">
+                                <h3 className="text-xl font-semibold text-violet-800">{course_name}</h3>
+                            </Link>
+                            <p className="leading-snug text-gray-900"> Price:{price} </p>
 
-                        <button onClick={handleCheckOut} className="btn btn-outline btn-info">Confirm Checkout</button>
+                            <button onClick={handleCheckOut} className="btn btn-outline btn-info">Confirm Checkout</button>
+                        </div>
                     </div>
                 </div>
             </div>
