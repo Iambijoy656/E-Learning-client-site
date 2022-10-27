@@ -16,7 +16,7 @@ const Checkout = () => {
 
 
     return (
-        <div className='w-9/12 mx-auto bg-gray-200 my-5'>
+        <div className='w-9/12 mx-auto bg-gray-200 my-5 p-10'>
 
 
             <div className='text-xl mb-10'>
@@ -44,7 +44,7 @@ const Checkout = () => {
                             <Link rel="noopener noreferrer" to="#" className="block">
                                 <h3 className="text-xl font-semibold text-violet-800">{course_name}</h3>
                             </Link>
-                            <p className="leading-snug text-gray-500 my-3"> Price:{price} </p>
+                            <p className="leading-snug text-gray-500 my-3"> Price:{price}Tk </p>
 
                             <button onClick={handleCheckOut} className="btn btn-outline btn-info">Confirm Checkout</button>
                         </div>
