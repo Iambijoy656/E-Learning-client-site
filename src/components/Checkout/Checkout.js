@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Checkout = () => {
     const course = useLoaderData();
-    const { id, module, course_name, picture, tutor, price, details } = course;
+    const { course_name, picture, tutor, price } = course;
     const { user } = useContext(AuthContext)
     console.log(user)
 
@@ -16,10 +16,10 @@ const Checkout = () => {
 
 
     return (
-        <div className='w-9/12 mx-auto'>
+        <div className='w-9/12 mx-auto bg-gray-200 my-5'>
 
 
-            <div className='text-xl mb-3'>
+            <div className='text-xl mb-10'>
                 <h1 className='text-center text-2xl font-bold'>
                     Welcome <span className="text-violet-700">{user?.displayName}</span>, to the
                     checkout page.
@@ -29,7 +29,7 @@ const Checkout = () => {
                 <div className="max-w-lg p-4 shadow-md bg-thite text-gray-900 text-center">
                     <div className="flex justify-between pb-4 border-bottom">
                         <div className="flex items-center">
-                            <Link rel="noopener noreferrer" to="#" className="mb-0 capitalize text-gray-900">Module: {module}</Link>
+                            <Link rel="noopener noreferrer" to="#" className="mb-0 capitalize text-gray-900">Please Confirm Checkout</Link>
                         </div>
                         <Link rel="noopener noreferrer" to="#"> Tutor: {tutor} </Link>
                     </div>
