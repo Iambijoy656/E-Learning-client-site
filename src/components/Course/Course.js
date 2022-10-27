@@ -17,7 +17,7 @@ const Course = () => {
 
 
     return (
-        <div ref={ref} className="flex flex-col max-w-lg p-6 space-y-6 lg:px-28 container mx-auto overflow-hidden rounded-lg shadow-md bg-white text-gray-900 min-w-full ">
+        <div ref={ref} className="flex flex-col max-w-lg p-6 space-y-6 lg:px-28  container mx-auto overflow-hidden rounded-lg shadow-md bg-white text-gray-900 min-w-full ">
             <div className="flex space-x-4">
                 <img alt="" src="https://source.unsplash.com/100x100/?portrait" className="object-cover w-12 h-12 rounded-full shadow bg-gray-500" />
                 <div className="flex flex-col space-y-1">
@@ -40,11 +40,15 @@ const Course = () => {
 
                 </div>
                 <div className="flex space-x-2 text-sm text-violet-900">
-                    <ReactToPdf targetRef={ref} x={-22} y={.5} scale={0.8}>
-                        {({ toPdf, targetRef }) => (
-                            <div style={{ width: 100, height: 100, background: 'red' }} onClick={toPdf} ref={targetRef} />
-                        )}
-                    </ReactToPdf>
+                    <div>
+                        <ReactToPdf targetRef={ref} filename="div-blue.pdf" x={-20} y={.5} scale={0.8}>
+                            {({ toPdf }) => (
+                                <button className='p-2  text-center bg-orange-500 rounded-lg text-black' onClick={toPdf}>Generate pdf</button>
+                            )}
+                        </ReactToPdf>
+
+                    </div>
+
                 </div>
             </div>
         </div>
